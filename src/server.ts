@@ -4,6 +4,9 @@ import { applyMiddleware, applyRoutes } from "./app/utils";
 import middleware from "./app/middleware";
 import errorHandlers from "./app/middleware/errorHandlers";
 import routes from "./app/router";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 process.on("uncaughtException", e => {
   console.log(e);
