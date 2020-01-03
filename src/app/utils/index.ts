@@ -1,4 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
+import { wrap } from "async-middleware";
 
 type Wrapper = ((router: Router) => void);
 
@@ -20,12 +21,12 @@ type Handler = (
 type Route = {
     path: string;
     method: string;
-    handler: Handler | Handler[];
+    handlers: Handler[];
 };
 
 export const applyRoutes = (routes: Route[], router: Router) => {
     for (const route of routes) {
-        const { method, path, handler } = route;
-        (router as any)[method](path, handler);
+        const { method, path, handlers } = route;
+        (router as any)[method](path, handlers.map((handler: Handler) => wrap(handler)));
     }
 };

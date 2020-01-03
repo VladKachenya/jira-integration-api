@@ -15,6 +15,6 @@ export const getProjects = async (credentials: ICredentials) => {
             'Accept': 'application/json'
         }
     };
-    const response = await request(options);
+    var response = await request(options);
     return JSON.parse(response);
 };
