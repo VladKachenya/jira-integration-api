@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, getRepository, ObjectType, Connection } from "typeorm";
+import { MigrationInterface, QueryRunner, getRepository, ObjectType } from "typeorm";
 import { TokenSeed, UserSeed, ProductSeed, ProjectSeed } from "../seeds";
 import { Token } from "../entities/Token";
 import { User } from "../entities/User";
@@ -32,6 +32,7 @@ export class seedData1578304822355 implements MigrationInterface {
         typedProduct[2].users = [typedUsers[0], typedUsers[1], typedUsers[2]];
         typedProduct[2].projects = [typedProjects[4], typedProjects[5]];
 
+        //If this invoke await it`s make ERROR!!!
         getRepository(Product).save(typedProduct);
         console.log(typedUsers);
     }

@@ -31,11 +31,10 @@ const database = new Database();
 // note that its not active database connection
 // TypeORM creates you connection pull to uses connections from pull on your requests
 (async () => {
-
+  
   try {
-
-    const dbConection = await database.connect();
-    await dbConection.runMigrations();
+    await database.connect();
+    await database.runMigrations();
 
     server.listen(config.server.port, () =>
       console.log(`Server is running http://localhost:${config.server.port}`)
