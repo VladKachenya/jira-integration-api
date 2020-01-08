@@ -31,10 +31,24 @@ const database = new Database();
 // note that its not active database connection
 // TypeORM creates you connection pull to uses connections from pull on your requests
 (async () => {
-  
+
   try {
-    await database.connect();
-    await database.runMigrations();
+    let retries = 5;
+    while (retries) {
+      try {
+        await database.connect();
+        break;
+      } catch (err) {
+        console.log(err);
+        retries -= 1;
+        console.log(`retries left: ${retries}`);
+        // wait 5 seconds
+        await new Promise(res => setTimeout(res, 5000));
+      }
+    }
+    if (config.isDevelopment) {
+      await database.runMigrations();
+    }
 
     server.listen(config.server.port, () =>
       console.log(`Server is running http://localhost:${config.server.port}`)

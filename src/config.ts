@@ -3,6 +3,8 @@ import * as path from 'path';
 
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config({ path: '.env' });
+dotenv.config({ path: 'ormconfig.env' });
+
 
 const allowEnv: string[] = ['development', 'test', 'production'];
 
@@ -36,11 +38,11 @@ const config: IConfig = {
         root: ROOT
     },
     db: {
-        user: process.env.DB_USER || 'postgres',
-        pass: process.env.DB_PASS || 'postgres',
-        host: process.env.DB_HOST || 'localhost',
-        port: normalizePort(process.env.DB_PORT || 5432),
-        name: process.env.DB_NAME || 'postgres',
+        user: process.env.TYPEORM_USERNAME || 'postgres',
+        pass: process.env.TYPEORM_PASSWORD || 'postgres',
+        host: process.env.TYPEORM_HOST || 'db',
+        port: normalizePort(process.env.TYPEORM_PORT || 5432),
+        name: process.env.TYPEORM_DATABASE || 'postgres',
         dbsslconn: process.env.NODE_ENV === 'production',
     },
     nodeEnv: process.env.NODE_ENV,

@@ -4,8 +4,6 @@ import { join } from 'path';
 import config from '../config';
 const parentDir = join(__dirname, '..');
 
-console.log(parentDir); // don`t forget to delete it
-
 const connectionOpts: ConnectionOptions = {
     type: 'postgres',
     host: config.db.host,
@@ -15,11 +13,9 @@ const connectionOpts: ConnectionOptions = {
     database: config.db.name,
     entities: [`${parentDir}/model/entities/**/*{.ts,.js}`],
     migrations: [`${parentDir}/model/migrations/**/*{.ts,.js}`],
-    // subscribers: [`${parentDir}/model/subscriber/**/*{.ts,.js}`],
     cli: {
         entitiesDir: `${parentDir}/model/entities`,
         migrationsDir: `${parentDir}/model/migrations`,
-        // subscribersDir: `${parentDir}/model/subscriber`
     },
     migrationsTableName: "migrations",
     synchronize: false,
