@@ -1,7 +1,7 @@
 export interface ICredentials {
     url: string;
     email: string;
-    tocken: string;
+    token: string;
 }
 
 export interface IProject {

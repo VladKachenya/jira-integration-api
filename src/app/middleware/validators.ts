@@ -12,7 +12,7 @@ export const checkCredentialsParams = (
         throw new HTTP400Error("Missing url parameter");
     } else if (!credentials.email || credentials.url.length < 3) {
         throw new HTTP400Error("Missing url parameter");
-    } else if (!credentials.tocken || credentials.url.length < 3) {
+    } else if (!credentials.token || credentials.url.length < 3) {
         throw new HTTP400Error("Missing token parameter");
     }
     else {

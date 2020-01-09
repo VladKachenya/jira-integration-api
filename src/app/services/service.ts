@@ -7,7 +7,7 @@ import { Token } from "../../model/entities/Token";
 import { Project } from "../../model/entities/Project";
 
 export const getCredentialsExistence = async (credentials: ICredentials): Promise<boolean> => {
-    return await haveUserForProduct(credentials.url, credentials.email, credentials.tocken);
+    return await haveUserForProduct(credentials.url, credentials.email, credentials.token);
 };
 
 export const getDbProjects = async (credentials: ICredentials): Promise<IProject[]> => {
@@ -26,7 +26,7 @@ export const getDbProjects = async (credentials: ICredentials): Promise<IProject
 
 export const getJiraProjects = async (credentials: ICredentials): Promise<IProject[]> => {
     const result: IProject[] = [];
-    const jiraProjects = (await getProjects(credentials.url, credentials.email, credentials.tocken)) as any[];
+    const jiraProjects = (await getProjects(credentials.url, credentials.email, credentials.token)) as any[];
     jiraProjects.forEach((element, index) => {
         result[index] = ({
             avatarUrl: element.avatarUrls["48x48"],
@@ -64,13 +64,13 @@ export const AddOrUpdateCredentialsProjects = async (credentials: ICredentials, 
         user = new User();
         user.email = credentials.email;
         let token = new Token();
-        token.value = credentials.tocken;
+        token.value = credentials.token;
         user.tokens = [token];
         product.users[product.users.length] = user;
     } else {
-        if (user.tokens.length == 0 || user.tokens.find(element => element.value === credentials.tocken) === undefined) {
+        if (user.tokens.length == 0 || user.tokens.find(element => element.value === credentials.token) === undefined) {
             const token = new Token();
-            token.value = credentials.tocken;
+            token.value = credentials.token;
             token.user = user;
             await pushToken(token);
         }
