@@ -1,5 +1,4 @@
 import request from "request-promise";
-import { ICredentials } from "./dataModels";
 
 export const getProjects = async (productUrl: string, email: string, token: string) => {
     const options = {
