@@ -1,0 +1,68 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/v1/projects": {
+            "post": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get jira projects by credentials using jira api",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "content": {
+                    "application/json": {}
+                },
+                "parameters": [
+                    {
+                        "name": "Credentials",
+                        "in": "body",
+                        "required": true,
+                        "description": "Jira project credentials",
+                        "schema": {
+                            "$ref": "#/definitions/credentials"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "credentials": {
+            "required": [
+                "url",
+                "email",
+                "token"
+            ],
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "example": "user.atlassian.net"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "user@user.user"
+                },
+                "token": {
+                    "type": "string",
+                    "example": "user"
+                }
+            }
+        }
+    }
+}
