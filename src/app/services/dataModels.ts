@@ -5,6 +5,7 @@ export interface ICredentials {
 }
 
 export interface IProject {
+    id: number;
     name: string;
     key: string;
     avatarUrl: string;

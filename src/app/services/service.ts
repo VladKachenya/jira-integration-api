@@ -15,6 +15,7 @@ export const getDbProjects = async (credentials: ICredentials): Promise<IProject
     const dbProjects = (await getProductWithProjects(credentials.url))?.projects;
     dbProjects?.forEach((element, index) => {
         result[index] = ({
+            id: element.id,
             avatarUrl: element.avatarUrl,
             key: element.key,
             name: element.name,
