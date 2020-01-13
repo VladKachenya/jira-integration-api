@@ -9,7 +9,7 @@ export default [
         method: "get",
         handlers: [
             (req: Request, res: Response) => {
-                res.status(200).send("Server running and work!");
+                res.status(200).send("Server running and work!!!");
             }
         ]
     },
