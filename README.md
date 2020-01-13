@@ -25,6 +25,12 @@ npm install
 npm run dev
 ```
 
+- Build and run the project in JS
+```
+npm run build
+npm run start
+```
+
 - Run tests in the project
 ```
 npm run test
@@ -56,7 +62,8 @@ The full folder structure of this app is explained below:
 | `build`                   | Compiles all source `.ts` files to `.js` files in the `dist` folder                    |
 | `dev`                     | Nodemon, process restarts if crashes. Continuously watches `.ts` files and re-compiles to `.js`   |
 | `test`                    | Runs all tests in the project    |
-| `typeorm`                      | Runs TypeORM commands | 
+| `start`                   | Runs node on `dist/index.js` which is the apps entry point                                |
+| `typeorm`                  | Runs TypeORM commands | 
 
 # Docker
 This project using docker-compose for running PostgreSQL and node containers.
