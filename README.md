@@ -36,9 +36,10 @@ npm run start
 npm run test
 ```
 
-
 ## Database - ORM
-This API work with an PostgreSQL database, using [TypeORM](https://github.com/typeorm/typeorm).
+This API work with an PostgreSQL database, using [TypeORM](https://github.com/typeorm/typeorm). The database have the follow structure:
+
+![Alt Text](./dbSchema.png)
  
 ## Project Structure
 TypeScript (`.ts`) files live in your `src` folder and after compilation are output as JavaScript (`.js`) in the `dist` folder.
