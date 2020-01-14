@@ -11,7 +11,7 @@ AVAILABLE ENDPOINTS
 # Getting Started
 - Clone the repository
 ```
-git clone https://github.com/VladKachenya/tp-jira-integration-api.git {project_name}
+https://github.com/VladKachenya/tp-jira-integration-api.git
 ```
 
 - Install dependencies
